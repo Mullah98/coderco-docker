@@ -3,4 +3,3 @@ __pycache__/
 .env
 *.log
 *.sqlite3
-MYSQL_ROOT_PW=my-secret-pw
