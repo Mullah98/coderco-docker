@@ -2,7 +2,7 @@ version: '3.8' # Which version we are using
 
 services: # List all different parts of app
   web:
-    build: . # Build web service from docker file in current directory
+    image: my-flask-app:multistage
     ports:
       - "5002:5002"
     depends_on:
