@@ -26,6 +26,7 @@ I learned how to create, manage, and orchestrate Docker containers, build multi-
   - Testing interactions between the Flask app and Redis  
   - Understanding service-to-service networking in Docker  
   This project helped me understand real multi-container architectures and how to get services communicating inside a Docker environment.
+![Assignment](/my-flask-redis-docker-app/assets/ezgif.com-optimize.gif)
 
 ## Notes
 - **[Docker Notes:](notes.md)** Notes and commands I made throughout the Docker module for study and revision purposes.
