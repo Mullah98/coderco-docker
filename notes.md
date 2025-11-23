@@ -28,6 +28,24 @@ Containers are like *shipping containers* -> Everything the app needs is inside,
 
 ---
 
+## VM vs Containers
+
+| Topic | Virtual Machines (VMs) | Containers |
+|-------|--------------------------|-------------|
+| **Isolation** | Full OS isolation (stronger) | Process-level isolation (lighter) |
+| **OS Requirements** | Each VM runs its own full OS | Share host OS kernel |
+| **Performance** | Heavier, slower startup | Lightweight, fast startup |
+| **Resource Usage** | High (RAM + CPU overhead) | Low (only app + dependencies) |
+| **Portability** | Less portable (depends on guest OS) | Highly portable across environments |
+| **Use Cases** | Running multiple different OSes or legacy systems | Microservices, distributed systems, scalable apps |
+| **Boot Time** | Seconds to minutes | Milliseconds |
+| **Image Size** | Large (GBs) | Small (MBs) |
+
+*VMs = strong isolation. heavier*
+*Containers = lighter, faster, portable*
+
+---
+
 
 ## Docker
 ### Purpose:
@@ -76,21 +94,38 @@ Containers are like *shipping containers* -> Everything the app needs is inside,
 
 ---
 
-## VM vs Containers
+## Dockerfile
+### What is it?
+- A text file with step-by-step instructions to build a *Docker image*. Each instructions creates a **layer**, which speeds up building through caching. Think of it as a recipe for your containerised app.
 
-| Topic | Virtual Machines (VMs) | Containers |
-|-------|--------------------------|-------------|
-| **Isolation** | Full OS isolation (stronger) | Process-level isolation (lighter) |
-| **OS Requirements** | Each VM runs its own full OS | Share host OS kernel |
-| **Performance** | Heavier, slower startup | Lightweight, fast startup |
-| **Resource Usage** | High (RAM + CPU overhead) | Low (only app + dependencies) |
-| **Portability** | Less portable (depends on guest OS) | Highly portable across environments |
-| **Use Cases** | Running multiple different OSes or legacy systems | Microservices, distributed systems, scalable apps |
-| **Boot Time** | Seconds to minutes | Milliseconds |
-| **Image Size** | Large (GBs) | Small (MBs) |
+### Why is it useful?:
+- Ensures repeatable, consistent environements.
+- Defines exactly how the image should be built.
 
-*VMs = strong isolation. heavier*
-*Containers = lighter, faster, portable*
+### Core Instructions:
+|Instruction|Purpose|
+|-----------|-------|
+|`FROM`|Sets the base image (e.g., node:14, python:3.11).|
+|`WORKDIR`|Sets the working directory inside the container.|
+|`COPY`|Copies files/folders from host → image.|
+|`RUN`|Executes commands during build (e.g., install dependencies).|
+|`EXPOSE`|Documents the port the container listens on.|
+|`CMD`|Command that runs when the container starts (only one per Dockerfile).|
+
+### Example Flow:
+1. `FROM node:14` → choose base image
+
+2. `WORKDIR /app` → set working directory
+
+3. `COPY package*.json .` → copy dependency files
+
+4. `RUN npm install` → install dependencies
+
+5. `COPY . .` → copy remaining app files
+
+6. `EXPOSE 3000` → expose port
+
+7. `CMD ["node", "index.js"]` → start the app
 
 ---
 
