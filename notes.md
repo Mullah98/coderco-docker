@@ -133,6 +133,9 @@ Run multi-container apps easily.
 - Consistent environments for teams.
 - Easy onboarding.
 
+- **Compose File:**
+- Uses a `docker-compose.yml` file to define services, networks, and volumes.
+
 - **Key Commands**
 ```
 docker-compose up
